@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 import { collection, FieldValue, getDocs, Timestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import TambahItem from '../components/store/TambahItem';
 import Toast from '../components/utilities/Toast';
+import BeliItem from '../components/store/BeliItem';
+import ItemCard from '../components/store/ItemCard';
 
 export interface IItemData {
   item_id: string;
@@ -13,6 +14,7 @@ export interface IItemData {
   item_description: string;
   item_price: number;
   item_img: string;
+  item_img_ref: string;
   item_created_at: Timestamp;
 }
 
@@ -61,70 +63,38 @@ const Home: NextPage = () => {
             <h4>SD SEA Sentosa</h4>
           </div>
           <div className='text-center w-1/3'>
-            <TambahItem toggleRefetch={toggleRefetch} />
+            <TambahItem toggleRefetch={toggleRefetch} setItems={setItems} />
           </div>
         </div>
         <div className='min-h-[20rem] mx-20 my-10'>
           <div className='flex flex-wrap gap-3 justify-center'>
-            {isLoading
-              ? [0, 1, 2].map((i) => {
-                  return (
-                    <span
-                      key={i}
-                      className='animate-pulse bg-gradient-to-b from-slate-200 h-60 rounded-md to-purple-50 w-80'
-                    ></span>
-                  );
-                })
-              : items.map(
-                  (
-                    {
-                      item_name,
-                      item_description,
-                      item_price,
-                      item_created_at,
-                      item_img,
-                    },
-                    i
-                  ) => {
-                    return (
-                      <div
-                        key={i}
-                        className='bg-white flex flex-col max-w-xs p-5 rounded-md shadow w-[20rem]'
-                      >
-                        <div className='h-40 mb-3 overflow-hidden relative rounded'>
-                          <Image
-                            src={item_img}
-                            alt='item'
-                            layout='fill'
-                            objectFit='cover'
-                          />
-                          <h3 className='absolute bg-purple-100 font-semibold px-2.5 py-0.5 right-2 rounded text-purple-800 top-2'>
-                            Rp.{item_price}
-                          </h3>
-                        </div>
-                        <h4>{item_name}</h4>
-                        <p className='text-gray-500'>{item_description}</p>
-                        <div className='flex grow items-end justify-between mt-3'>
-                          <div>
-                            <p className='text-gray-500 text-xs'>
-                              Dibuat{' '}
-                              {item_created_at
-                                .toDate()
-                                .toLocaleString('ID-id', {
-                                  day: 'numeric',
-                                  month: 'long',
-                                  year: 'numeric',
-                                })}
-                            </p>
-                          </div>
-                          <button className='bg-purple-700 font-medium px-5 py-1.5 rounded-md text-sm text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 active:animate-wiggle'>
-                            Beli
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  }
-                )}
+            {isLoading ? (
+              [0, 1, 2].map((i) => {
+                return (
+                  <span
+                    key={i}
+                    className='animate-pulse bg-gradient-to-b from-slate-200 h-60 rounded-md to-purple-50 w-80'
+                  ></span>
+                );
+              })
+            ) : items.length === 0 ? (
+              <p className='mt-5 text-slate-700'>
+                Tidak ada item, tekan{' '}
+                <span className='font-semibold'>Tambah Item</span> untuk
+                menambahkan
+              </p>
+            ) : (
+              items.map((item, i) => {
+                return (
+                  <ItemCard
+                    key={i}
+                    item={item}
+                    toggleRefetch={toggleRefetch}
+                    setItems={setItems}
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </div>

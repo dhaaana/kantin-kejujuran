@@ -32,8 +32,8 @@ const Balance: NextPage = () => {
           <h4>Balance Box</h4>
         </div>
         <div className='min-h-[20rem] my-3 px-10 w-full'>
-          <div className='bg-white flex items-center justify-between p-5 px-10 rounded-md shadow w-full'>
-            <div>
+          <div className='bg-white flex flex-col gap-y-4 items-center p-5 px-10 rounded-md shadow w-full sm:flex-row sm:justify-between'>
+            <div className='text-center sm:text-start'>
               <p>Balance:</p>
               <h1>Rp. {balance.balance}</h1>
             </div>

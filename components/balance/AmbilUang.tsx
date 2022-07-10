@@ -98,8 +98,8 @@ export default function AmbilUang({
               </button>
             </header>
 
-            <main className='flex gap-x-4 mt-4'>
-              <div className='flex flex-col gap-2.5'>
+            <main className='flex flex-col gap-4 mt-4 sm:flex-row'>
+              <div className='flex flex-col gap-2.5 w-full sm:w-1/2'>
                 <label
                   htmlFor='amount'
                   className='block font-medium text-gray-900 text-sm'
@@ -135,7 +135,7 @@ export default function AmbilUang({
                   </span>
                 )}
               </div>
-              <div className='flex flex-col gap-2.5 w-1/2'>
+              <div className='flex flex-col gap-2.5 w-full sm:w-1/2'>
                 <p className='block font-medium text-gray-900 text-sm'>
                   Saldo Setelah Uang Diambil
                 </p>

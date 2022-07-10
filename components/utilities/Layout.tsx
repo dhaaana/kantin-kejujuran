@@ -24,13 +24,13 @@ export default function Layout({
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Toast isLoading={isLoading} />
-      <div className='bg-purple-50 flex flex-col items-center min-h-screen px-20 py-10'>
-        <div className='border-b-2 border-b-purple-300 flex items-end justify-between pb-3 w-full'>
-          <div className='w-1/2'>
+      <div className='bg-purple-50 flex flex-col items-center min-h-screen px-3 py-10 sm:px-20'>
+        <div className='border-b-2 border-b-purple-300 flex flex-col pb-3 w-full sm:flex-row sm:items-end sm:justify-between'>
+          <div className='text-center w-full sm:text-start sm:w-1/2'>
             <h1>Kantin Kejujuran</h1>
             <h4>SD SEA Sentosa</h4>
           </div>
-          <div className='flex gap-4 justify-end w-1/2'>
+          <div className='flex gap-4 justify-center w-full sm:justify-end sm:w-1/2'>
             <Link href={'/'}>
               <span
                 className={`hover:border-b-2 hover:border-b-purple-700 cursor-pointer hover:font-semibold ${

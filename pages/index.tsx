@@ -77,23 +77,25 @@ const Home: NextPage = () => {
   return (
     <>
       <Layout title='Store' isLoading={isLoading}>
-        <div className='flex justify-between mt-7 px-10 w-full'>
-          <div className='w-1/2'>
+        <div className='flex flex-wrap gap-y-2 mt-7 px-10 w-full sm:justify-between'>
+          <div className='sm:w-1/2'>
             <h4>Store</h4>
           </div>
-          <div className='flex gap-2 items-center justify-end w-1/2'>
-            <p className='font-semibold text-purple-700 text-xs'>Sort By</p>
+          <div className='flex gap-2 items-center justify-end sm:w-1/2'>
+            <p className='font-semibold hidden text-purple-700 text-xs sm:block'>
+              Sort By
+            </p>
             <select
               name='sort'
               id='sort'
-              className='bg-gray-50 block border border-gray-300 outline-none p-2.5 rounded-lg text-gray-900 text-sm transition-all w-1/4 focus:border-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-300'
+              className='bg-gray-50 block border border-gray-300 outline-none p-2.5 rounded-lg text-gray-900 text-sm transition-all w-1/2 sm:w-1/4 focus:border-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-300'
               onChange={(e) => sortItem(e)}
             >
               <option value='0'>No Sort</option>
               <option value='item_name-asc'>Name A-Z</option>
               <option value='item_name-desc'>Name Z-A</option>
-              <option value='item_created_at-asc'>Latest Created Time</option>
-              <option value='item_created_at-desc'>Oldest Created Time</option>
+              <option value='item_created_at-desc'>Latest Created Time</option>
+              <option value='item_created_at-asc'>Oldest Created Time</option>
             </select>
             <TambahItem setItems={setItems} />
           </div>

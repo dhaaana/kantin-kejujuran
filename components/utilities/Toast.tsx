@@ -1,5 +1,5 @@
-import React from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface IToastProps {
   isLoading?: boolean;
@@ -9,7 +9,7 @@ export default function Toast({ isLoading }: IToastProps) {
   React.useEffect(() => {
     if (isLoading !== undefined) {
       if (isLoading === true) {
-        toast.loading("Loading...");
+        toast.loading('Loading...');
         return;
       }
       toast.dismiss();
@@ -18,31 +18,31 @@ export default function Toast({ isLoading }: IToastProps) {
 
   return (
     <Toaster
-      position="bottom-right"
+      position='bottom-right'
       reverseOrder={false}
       gutter={8}
-      containerClassName=""
+      containerClassName=''
       containerStyle={{}}
       toastOptions={{
         // Define default options
-        className: "",
+        className: '',
         duration: 5000,
         style: {
-          background: "#fff",
-          color: "#000",
-          padding: "0.75rem",
+          background: '#fff',
+          color: '#000',
+          padding: '0.75rem',
         },
         // Default options for specific types
         success: {
           theme: {
-            primary: "green",
-            secondary: "white",
+            primary: 'green',
+            secondary: 'white',
           },
         },
         error: {
           theme: {
-            primary: "red",
-            secondary: "white",
+            primary: 'red',
+            secondary: 'white',
           },
         },
       }}

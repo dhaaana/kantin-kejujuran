@@ -45,7 +45,7 @@ export default function ItemCard({
       <div className='flex grow items-end justify-between mt-3'>
         <div>
           <p className='text-gray-500 text-xs'>
-            Dibuat{' '}
+            Ditambahkan{' '}
             {item_created_at.toDate().toLocaleString('ID-id', {
               day: 'numeric',
               month: 'long',

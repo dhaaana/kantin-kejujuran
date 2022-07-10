@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Modal } from '../../components/utilities/Modal';
 import Spinner from '../utilities/Spinner';
@@ -11,11 +11,14 @@ import {
   addDoc,
   serverTimestamp,
   Timestamp,
+  doc,
+  getDoc,
 } from 'firebase/firestore';
 import toast from 'react-hot-toast';
 
-interface TambahItemProps {
+export interface TambahItemProps {
   toggleRefetch: () => void;
+  setItems: React.Dispatch<SetStateAction<IItemData[]>>;
 }
 
 interface IFormTambahItem
@@ -27,6 +30,7 @@ type ITambahItemPayload = Omit<IItemData, 'item_id'>;
 
 export default function TambahItem({
   toggleRefetch,
+  setItems,
 }: TambahItemProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -58,26 +62,42 @@ export default function TambahItem({
   };
 
   const handleAddDoc = async (item: ITambahItemPayload) => {
-    try {
-      await addDoc(collection(db, 'items'), item);
-      toast.success('Pengumuman ditambahkan');
-    } catch (error) {
-      toast.error(`Error: ${error}`);
-    } finally {
-      setIsLoading(false);
-    }
+    addDoc(collection(db, 'items'), item)
+      .then((newDoc) => {
+        const docRef = doc(db, 'items', newDoc.id);
+        getDoc(docRef).then((doc) => {
+          setItems((prev) => {
+            const arr = [...prev];
+            const newItem = { ...doc.data(), item_id: doc.id };
+            if (!arr.some((data) => data.item_id === doc.id)) {
+              arr.push(newItem as IItemData);
+            }
+            return arr;
+          });
+          setIsOpen(false);
+          toast.success('Item ditambahkan');
+        });
+      })
+      .catch((error) => {
+        toast.error(`Error: ${error}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const onSubmit = handleSubmit(async ({ file, ...data }) => {
     setIsLoading(true);
     const item_img = file[0];
-    const imageRef = ref(storage, `item_img/${item_img.name}-${uuidv4()}`);
+    const item_img_ref = `item_img/${item_img.name}-${uuidv4()}`;
+    const imageRef = ref(storage, item_img_ref);
     uploadBytes(imageRef, item_img)
       .then(() => {
         getDownloadURL(imageRef).then((item_img) => {
           handleAddDoc({
             ...data,
             item_img: item_img,
+            item_img_ref: item_img_ref,
             item_created_at: serverTimestamp() as Timestamp,
           });
         });

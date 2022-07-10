@@ -15,6 +15,7 @@ interface BeliItemProps
 
 export default function TambahItem({
   toggleRefetch,
+  setItems,
   item_name,
   item_price,
   item_id,
@@ -31,6 +32,7 @@ export default function TambahItem({
       const document = deleteDoc(documentRef);
       const img = deleteObject(imageRef);
       Promise.all([document, img]);
+      setItems((prev) => prev.filter((item) => item.item_id !== item_id));
       setIsOpen(false);
       toast.success('Item berhasil dibeli');
     } catch (error) {

@@ -37,3 +37,16 @@ NEXT_PUBLIC_FIREBASE_APP_ID=1:949057256432:web:49e48e46b1baad0db1fb35
 ## Screenshot
 
 These are some of the screenshot of Kantin Kejujuran SD SEA Sentosa. You can also try the app on `https://kantin-kejujuran-sd-sea.vercel.app/`.
+
+- Main Page (Store)
+  <br>
+  ![main page](/public/images/main-page.jpg 'Main Page')
+- Balance Box Page
+  <br>
+  ![balance box](/public/images/balance-box-page.jpg 'Balance Box')
+- Add Item Menu
+  <br>
+  ![add item](/public/images/add-item-menu.jpg 'Add Item Menu')
+- Change Balance Menu
+  <br>
+  ![change balance](/public/images/change-balance-menu.jpg 'Change Balances')

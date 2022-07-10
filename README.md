@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kantin Kejujuran SD SEA Sentosa
 
-## Getting Started
+Kantin Kejujuran SD SEA Sentosa is a web application created as one of the selection tests for the Compfest 14 Software Engineer Academy.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
+This web application is built using the following stack
+Frontend:
+
+1. Next.js
+2. Typescript
+3. Tailwind CSS
+4. And many more js libraries
+
+Backend:
+
+1. Firebase Firestore
+2. Firebase Storage
+
+## Installation
+
+You can use the package manager npm or yarn to install Kantin Kejujuran SD SEA Sentosa in your local machine.
+
+- run `npm install` or `yarn` to install all the dependencies
+- run `npm run dev` or `yarn dev` to start the development server on localhost:3000
+  Don't forget to create new `.env.local` file based on the `.env.local.example` and populate the file with the following credential.
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyBypEZFM1DoyyqJUt6v17R9-oE2lA1Xty8
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=kantin-kejujuran-b89ab.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=kantin-kejujuran-b89ab
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=kantin-kejujuran-b89ab.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=949057256432
+NEXT_PUBLIC_FIREBASE_APP_ID=1:949057256432:web:49e48e46b1baad0db1fb35
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshot
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+These are some of the screenshot of Kantin Kejujuran SD SEA Sentosa. You can also try the app on `https://kantin-kejujuran-sd-sea.vercel.app/`.

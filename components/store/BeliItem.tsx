@@ -9,12 +9,10 @@ import { ref, deleteObject } from 'firebase/storage';
 
 interface BeliItemProps
   extends Omit<IItemData, 'item_img' | 'item_created_at' | 'item_description'> {
-  toggleRefetch: () => void;
   setItems: React.Dispatch<SetStateAction<IItemData[]>>;
 }
 
 export default function TambahItem({
-  toggleRefetch,
   setItems,
   item_name,
   item_price,

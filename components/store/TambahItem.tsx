@@ -17,7 +17,6 @@ import {
 import toast from 'react-hot-toast';
 
 export interface TambahItemProps {
-  toggleRefetch: () => void;
   setItems: React.Dispatch<SetStateAction<IItemData[]>>;
 }
 
@@ -28,10 +27,7 @@ interface IFormTambahItem
 
 type ITambahItemPayload = Omit<IItemData, 'item_id'>;
 
-export default function TambahItem({
-  toggleRefetch,
-  setItems,
-}: TambahItemProps): JSX.Element {
+export default function TambahItem({ setItems }: TambahItemProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 

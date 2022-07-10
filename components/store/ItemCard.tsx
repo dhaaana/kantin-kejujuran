@@ -10,7 +10,6 @@ interface ItemCardProps extends TambahItemProps {
 
 export default function ItemCard({
   item,
-  toggleRefetch,
   setItems,
 }: ItemCardProps): JSX.Element {
   const [status, setStatus] = React.useState<string>('loading');
@@ -54,7 +53,6 @@ export default function ItemCard({
           </p>
         </div>
         <BeliItem
-          toggleRefetch={toggleRefetch}
           setItems={setItems}
           item_id={item_id}
           item_name={item_name}
